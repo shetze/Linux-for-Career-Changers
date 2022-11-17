@@ -1,4 +1,4 @@
-#Linux Toolbox Essentials
+# Linux Toolbox Essentials
 
 Um Linux in seiner Vielfalt zu erschließen, ist es sinnvoll und notwendig, ein paar Werkzeuge kennenzulernen und deren Verwendung einzuüben.
 Ich möchte hier eine subjektive Auswahl der aus meiner Sicht wichtigsten Werkzeuge vorstellen. Jedes dieser Werkzeuge verdient spezielle Aufmerksamkeit und Beachtung. In der kurzen Vorstellungsrunde kann ich die Macht und die Möglichkeiten dieser Werkzeuge nicht einmal annähernd aufzeigen. Es geht mir eher darum, die Verwendung in einem relevanten Kontext zu zeigen und den praktischen Wert unserer Werkzeugkiste zu demonstrieren.
@@ -12,7 +12,7 @@ In diesem Dokument sind alle Schritte und Beispiele aufgeführt, so dass du sie 
 
 
 
-##Gnome Terminal
+## Gnome Terminal
 Los geht's mit dem Gnome Terminal. 
 
 Auf dem RHEL Notebook findest du das Programm unter `Applications->Sytem Tools->Terminal`
@@ -24,7 +24,7 @@ Nachdem du das Gnome Terminal im Menü aufgerufen hast, erscheint ein Fenster mi
 Die Standardgröße des Terminal Fensters ist 80x24, das heisst du hast 24 Zeilen zu je 80 Zeichen Länge. Das Fenster lässt sich mit der Maus ziehen und in jede Größe verändern. Über den Menüpunkt `Terminal` lassen sich auch andere fest eingestellte Terminalgrößen auswählen. Im Menüpunkt View kann die Schriftgröße verändert werden.
 Die meisten Menüpunkte lassen sich auch über Tastaturkürzel erreichen. Zum Beispiel mit der Tastenkombination `Shift-Ctrl-T` kannst du in dem gleichen Fenster ein zweites Tab mit einem weiteren Terminal aufmachen. Mit der Tastenkombination `Alt-1` und `Alt-2` kannst du zwischen dem ersten und zweiten Tab umschalten. Mit `Ctrl-PageUp` und `Ctrl-PageDown` kannst du in einer Reihe von Tabs rauf und runter blättern.
 
-##bash
+## bash
 In dem Terminalfenster siehst du eine Eingabeaufforderung. Das ist eine Zeichenkette und eine Markierung für die Texteingabe. Die Zeichenkette zeigt normalerweise meinen Benutzernamen und den Namen des Rechners auf dem ich arbeite. Außerdem wird der Name des Verzeichnisses angezeigt, in dem ich mich aktuell befinde. Mit der Tilde wird mein Heimatverzeichnis bezeichnet.
 
 Die Eingabeaufforderung gehört zu den wichtigsten aller Programme in meiner Liste, der Shell. Die Shell ist ein Programm, dessen Zweck darin besteht, andere Programme zu starten und diesen Programmen eine definierte Laufzeitumgebung zur Verfügung zu stellen. 
@@ -39,7 +39,7 @@ Mit `cd` ohne Angabe eines Zielverzeichnisses gelange ich immer sofort in mein H
 
 Die Shell ist ein enorm mächtiges Programm und es lohnt sich, dessen Verwendung und Möglichkeiten gründlich zu erlernen. 
 
-##man
+## man
 Um alle Details zur Verwendung eines Programms zu erfahren, gibt es die Manual Pages.
 
 Mit `man bash` wird mir die Dokumentation zur Shell angezeigt. In dem Dokument sehen wir, dass die bash seit 1989 verwendet wird und dass sie der Nachfolger der Bourne Shell ist. Das war damals schon eine sehr beliebte und weit verbreitete Shell für UNIX Systeme. Die bash ist eine verbesserte und um so mehr beliebte Version. Es gibt noch andere Shells für Unix, zum Beispiel die Korn Shell oder die C Shell. In der bash sind einige der besten Features dieser anderen Shells enthalten, so dass wir heute praktisch nur noch die bash verwenden.
@@ -50,7 +50,7 @@ Die Manualpage von bash ist ziemlich lang, du kannst mit den Tasten `Space` und 
 
 Mit `Ctrl-L` wird der aktuelle Inhalt des Terminalfensters gelöscht.
 
-##ls
+## ls
 Sämtliche Daten im Linux System sind in dem einen großen Dateisystem organisiert. Um hier eine Übersicht zu bekommen, gibt es das Werkzeug ls. Mit `ls` wird der Inhalt eines Verzeichnisses angezeigt.
 
 Ohne weitere Argumente wird einfach der Inhalt des aktuellen Arbeistverzeichnisses gelistet. Oben haben wir gesehen das das interne bash Kommando `pwd` den Namen und den Pfad dieses Verzeichnisses anzeigt.
@@ -67,7 +67,7 @@ Objekte, deren Name mit einem Punkt beginnt, werden bei einem einfachen Listing 
 
 Als normaler User habe ich nicht das Recht, alle Daten zu sehen. Noch weniger kann ich Daten verändern. Nur in meinem Heimatverzeichnis gehören mir alle Daten und ich habe alle Rechte.
 
-##mkdir
+## mkdir
 
 Zum Beispiel kann ich in meinem Heimatverzeichnis neue Verzeichnisse anlegen.
 
@@ -83,7 +83,7 @@ Mit bash kann ich auch eine ganze Liste von Verzeichnissen in einem einzigen Auf
 
 `mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}`
 
-##vim 
+## vim 
 Wenn ich eine existierende Textdatei bearbeiten oder eine neue erzeugen möchte, brauche ich einen Texteditor. Im Jahr 1976 wurde von Bill Joy für diesen Zweck das UNIX Programm vi geschrieben. Eine verbesserte Version dieses Editors ist in jedem Linux System unter dem Namen `vim` enthalten.
 
 Auch für vim gibt es eine Manualpage `man vim`. Ausserdem kann ich im Editor mit dem Befehl `:help` sehr ausführliche Informationen zur Verwendung des Editors bekommen. Auch für vim lohnt es sich, ein paar Stunden in das Studium der verschiedenen Funktionen zu investieren. Im Unterschied anderen Editoren sind die zentralen Funktionen seit vielen Jahrzehnten bewährt und stabil. Finde selbst heraus, weshalb dieser Editor als Standard für alle UNIX und Linux Systeme etabliert ist.
@@ -92,17 +92,17 @@ Als ersten Einstieg: Der Editor arbeitet in verschiedenen Modi. Das Programm sta
 Mit `x` lösche ich das Zeichen unter dem Cursor, mit `D` lösche ich die Zeile vom Cursor bis zum Zeilenende, mit `dd` lösche ich die gesamte Zeile. Mit `p` kann ich die so gelöschte Zeile unterhalb des Cursors wieder Einfügen, mit `P` wird die Zeile oberhalb eingefügt.
 Mit `:w` wird die Datei geschrieben und mit `:q` verlasse ich den Editor.
 
-##view 
+## view 
 Wenn ich verhindern will, dass ich eine existierende Datei aus Versehen verändere, kann ich den Editor auch unter dem Namen view aufrufen. Dann startet er automatisch im read only Modus.
 
-##less 
+## less 
 Eine andere Möglichkeit Dateien einfach nur anzuzeigen ohne sie zu editieren bietet ein sogenannter Pager. `less` ist so ein Werkzeug. Ohne es zu merken haben das schon bei den Aufrufen von man kennengelernt. Less ist nämlich der Standard-Pager und wird von man zum Anzeigen der Manualpages automatisch verwendet. 
 
-##chmod
+## chmod
 Für die eigenen Dateien und Verzeichnisse kann ich bestimmen, welche Rechte meine Gruppe und die übrigen Nutzer an diesen Objekten haben. Dafür gibt es das Tool `chmod`.
 In der Manualpage `man chmod` wird auch die Bedeutung der verschiedenen Rechte erklärt.
 
-##yumdownloader
+## yumdownloader
 Es gibt viele Möglichkeiten, Dateien aus dem Internet in mein Heimatverzeichnis zu laden. Wenn ich die Quelltexte und alle Steuerdateien zum Erzeugen eines der im RHEL enthaltenen Programme in mein Heimatverzeichnis laden möchte, kann ich das Werkzeug yumdownloader verwenden.
  
 `yumdownloader --source bash`
@@ -110,7 +110,7 @@ lädt das Source RPM Paket von Red Hat aus dem Internet. Das geht für alle aus 
 
 Wenn das Programm yumdownloader noch nicht auf deinem System installiert ist, muss da Paket yum-utils nachinstalliert werden.
 
-##rpm
+## rpm
 Um ein mit yumdownloader geholtes Source RPM Paket auszupacken, verwende ich das Red Hat Package Manager Tool `rpm`
 Das Source RPM installiert alle Dateien automatisch in meinem Heimatverzeichnis in dem Unterverzeichnis `rpmbuild`. Zufällig habe ich das ja in mit `mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}` vorhin schon angelegt.
 Wenn dieses Verzeichnis nicht existiert wird es beim Auspacken des Source RPM automatisch erzeugt.
@@ -120,7 +120,7 @@ In dem Verzeichnis `~/rpmbuild/SOURCES` werden alle Quelltexte abgelegt, die Red
 Die meisten SOURCES Dateien sind relativ kleine Patches. Patches sind Änderungen, die während des Bauens an den Sourcen vorgenommen werden. Das eigentliche Source-Paket ist die Datei mit der Endung `tar.gz`
 Dabei handelt es sich um ein mit gzip komprimiertes TAR Archiv.
 
-##tar
+## tar
 `tar` ist ein Werkzeug und ein Dateiformat, das für UNIX schon im Jahr 1979 entwickelt wurde. Der Name weist auf die ursprüngliche Funktion zum Schreiben und Lesen von Datensicherungen auf Magnetbändern hin. Es lassen sich aber ebenso gut Archivdateien auf einer Festplatte damit bearbeiten.
 
 ```
@@ -128,15 +128,15 @@ cd ~/rpmbuild/BUILD
 tar xvfz ../SOURCES/bash-4.2.tar.gz
 ```
 
-##cp 
-##mv 
-##rm 
-##rmdir 
-##git
-##grep 
-##sort 
-##head 
-##tail 
-##make 
+## cp 
+## mv 
+## rm 
+## rmdir 
+## git
+## grep 
+## sort 
+## head 
+## tail 
+## make 
 
 
