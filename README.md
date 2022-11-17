@@ -1,2 +1,2 @@
-# Linux-for-Career-Changers
-Short introduction, overview and motivation to the Linux and Open Source ecosystem.
+# Linux für Quereinsteiger
+Kurze Einführung, Übersicht und Motivation in das Linux und Open Source Ökosytem.
