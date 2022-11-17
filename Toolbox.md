@@ -202,10 +202,28 @@ Allerdings arbeitet dieses Tool tatsächlich nur und ausschließlich auf Verzeic
 
 Um ein Verzeichnis mit allem Inhalt schnell und radikal zu löschen verwenden wir stattdessen `rm -fr`.
 
-Vor so einem radikalen Schritt ist es immer sinnvoll einen Moment inne zu halten um sich zu vergewissern dass nichts wichtiges dabei verloren geht. Das Linux Dateisystem hat kein Netz und doppelten Boden um einmal gelöschte Dateien zurück zu bringen. Die Rekonstruktion von Daten auf dem unter dem Dateisystem liegenden Blockdevice ist extrem aufwändig und unsicher, deshalb solte das unbedingt vermieden werden.
+Vor so einem radikalen Schritt ist es immer sinnvoll einen Moment inne zu halten um sich zu vergewissern dass nichts wichtiges dabei verloren geht. Das Linux Dateisystem hat kein Netz und doppelten Boden um einmal gelöschte Dateien zurück zu bringen. Die Rekonstruktion von Daten auf dem unter dem Dateisystem liegenden Blockdevice ist extrem aufwändig und unsicher, deshalb sollte das unbedingt vermieden werden.
 
 ## ssh
+
+Linux und Open Source Software haben die größte Bedeutung und entfalten ihren vollen Nutzen als Server und mit netzwerkbasierte Applikationen. Im wissenschaftlich technischen Bereich gibt es auch Linux Workstations am Arbeitsplatz, die leistungsfähigsten Systeme befinden sich aber in der Regel zentral in gut gesicherten und klimatisierten Rechenzentren.
+
+Um bequem vom Arbeisplatz aus mit und auf diesen Serversystemen zu arbeiten verwenden wir das Werkzeug `ssh user@server.example.org`.
+
+Der Name *Secure Shell* ist ein bischen irreführend, weil ssh selbst nur die Netzwerkfunktionalität zur Verbindung zu einem sshd Server bereitstellt. Als Default wird auf der Gegenstelle automatisch eine Shell gestartet, typischerweise bash. Es können aber auch beliebig andere Programme mit ssh aufgerufen werden. Der Name ssh verweist auf ein anderes Tool, `rsh` (remote shell) das im Prinzip den gleichen Zweck erfüllt. Allerdings ist die Netzwerkverbinung mit rsh nicht automatisch und in jedem Fall stark verschlüsselt. Das hat sich als schwerwiegendes Sicherheitsrisiko erwiesen, deshalb wird heute ssh als Nachfolger mit starken Sicherheitseigenschaften verwendet.
+
+Die Verbindung zur Gegenstelle kann grundsätzlich über ein einfaches user/password Login verfahren authentifiziert werden. Schon bei der Anmeldung werden alle Tastatureingaben verschlüsselt übertragen. Trotzdem wird von vielen Servern die Passwortauthentifizierung generell verboten. Stattdessen wird für die Authentifizierung ein zuvor ausgetauschter ssh-key erwartet. So ein Schlüssel wird mit `ssh-keygen` erzeugt. Der private Teil des Schlüssels muss sicher aufbewahrt werden. Der öffentliche Teil kann dann aber ohne Risiko weitergegeben werden.
+
 ## git
+
+Die Verteilung von Quelltexten zu Open Source Projekten über Source Pakete, wie wir das mit `yumdownload` gesehen haben, ist nur eine von vielen Möglichkeiten. In der Praxis ist für die gemeinschaftliche Arbeit an großen Projekten der Weg über ein Versionskontrollsytem auf einem öffentlichen Server im Internet wesentlich besser geeignet.
+
+Als Format und Werkzeug für die Versionsverwaltung hat sich `git` allgemein durchgesetzt. Öffentiche Server auf denen Open Source Projekte ihre Entwicklung mit `git` managen können sind zum Beispiel GitHub, GitLab und SourceForge.
+
+Die Quellen von einem Open Source Projekt lassen sich deshalb in der Regel mit einem einfachen Aufruf von 
+`git clone https://github.com/shetze/Linux-for-Career-Changers.git`
+direkt und aus erster Hand von dem *Heimatserver* des jeweiligen Projekts bekommen. 
+
 ## grep 
 ## sort 
 ## head 
