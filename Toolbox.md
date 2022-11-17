@@ -8,7 +8,7 @@ Für eine eigene und tiefere Erkenntnis und Erfahrung musst du für jedes dieser
 Ich gehe davon aus, dass du einen Linux Arbeitsplatzrechner oder wenigstens eine Virtuelle Maschine vor dir hast, mit dem du die von mir gezeigten Schritte nachvollziehen kannst. In den Beispielen verwende ich Red Hat Enterprise Linux, du solltest das aber auch mit jeder anderen Linux Distribution machen können.
 
 Ich empfehle, zuerst diesen Text als Ganzes zu lesen und erst im Anschluss mit den eigenen Übungen zu beginnen.
-In diesem Dokument sind alle Schritte und Beispiele aufgeführt, so dass du sie selbst in deiner eigenen Geschwindigkeit nachvollziehen kannst.
+In diesem Dokument sind alle Schritte und Beispiele als `Code` hervorgehoben, so dass du sie schnell findest und selbst in deiner eigenen Geschwindigkeit nachvollziehen kannst.
 
 
 
@@ -25,7 +25,7 @@ Die Standardgröße des Terminal Fensters ist 80x24, das heisst du hast 24 Zeile
 Die meisten Menüpunkte lassen sich auch über Tastaturkürzel erreichen. Zum Beispiel mit der Tastenkombination `Shift-Ctrl-T` kannst du in dem gleichen Fenster ein zweites Tab mit einem weiteren Terminal aufmachen. Mit der Tastenkombination `Alt-1` und `Alt-2` kannst du zwischen dem ersten und zweiten Tab umschalten. Mit `Ctrl-PageUp` und `Ctrl-PageDown` kannst du in einer Reihe von Tabs rauf und runter blättern.
 
 ## bash
-In dem Terminalfenster siehst du eine Eingabeaufforderung. Das ist eine Zeichenkette und eine Markierung für die Texteingabe. Die Zeichenkette zeigt normalerweise meinen Benutzernamen und den Namen des Rechners auf dem ich arbeite. Außerdem wird der Name des Verzeichnisses angezeigt, in dem ich mich aktuell befinde. Mit der Tilde wird mein Heimatverzeichnis bezeichnet.
+In dem Terminalfenster siehst du eine Eingabeaufforderung. Das ist eine Zeichenkette und eine Markierung für die Texteingabe. Die Zeichenkette zeigt normalerweise meinen Benutzernamen und den Namen des Rechners auf dem ich arbeite. Außerdem wird der Name des Verzeichnisses angezeigt, in dem ich mich aktuell befinde. Mit der Tilde `~` wird mein Heimatverzeichnis bezeichnet.
 
 Die Eingabeaufforderung gehört zu den wichtigsten aller Programme in meiner Liste, der Shell. Die Shell ist ein Programm, dessen Zweck darin besteht, andere Programme zu starten und diesen Programmen eine definierte Laufzeitumgebung zur Verfügung zu stellen. 
 
@@ -33,7 +33,7 @@ In der Regel wird eine solche Shell interaktiv verwendet, es sitzt also eine Per
 
 Alle Daten, das sind Programme, Texte, Bilder oder irgendwelche anderen in Bits und Bytes codierten Informationen, die sich in einem Linux System befinden sind in einem einzigen Dateisystem repräsentiert. Dieses Dateisystem ist ein Baum aus Verzeichnissen. Die Struktur dieses Baums folgt dem Linux Datei System Standard.
 
-Jeder User hat sein eigenes Home Verzeichnis in dem `/home` Ast des Verzeichnisbaums. Mit dem Shellkommando `pwd` wird mir das aktuelle Arbeitsverzeichnis angezeigt. Mit `cd` kann ich in ein anderes Verzeichnis wechseln. Dabei kann ich den Namen des Zielverzeichnisses absolut mit einem führenden Slash oder ohne Slash relativ zu meinem aktuellen Verzeichnis angeben.
+Jeder User hat sein eigenes Home Verzeichnis in dem `/home` Ast des Verzeichnisbaums. Mit dem Shellkommando `pwd` wird mir das aktuelle Arbeitsverzeichnis angezeigt. Mit `cd` kann ich in ein anderes Verzeichnis wechseln. Dabei kann ich den Namen des Zielverzeichnisses **absolut** mit einem führenden Slash oder ohne Slash **relativ** zu meinem aktuellen Verzeichnis angeben.
 
 Mit `cd` ohne Angabe eines Zielverzeichnisses gelange ich immer sofort in mein Heimatverzeichnis. Mit `cd -` wechsele ich zurück in das zuletzt verwendete Verzeichnis.
 
@@ -55,7 +55,7 @@ Sämtliche Daten im Linux System sind in dem einen großen Dateisystem organisie
 
 Ohne weitere Argumente wird einfach der Inhalt des aktuellen Arbeistverzeichnisses gelistet. Oben haben wir gesehen das das interne bash Kommando `pwd` den Namen und den Pfad dieses Verzeichnisses anzeigt.
 
-Das Wurzelverzeichnis in dem der gesamte Dateisystembaum beginnt wird mit einem `/` bezeichnet. `ls /` zeigt den Inhalt dieses Wurzelverzeichnisses an.
+Das Wurzelverzeichnis, in dem der gesamte Dateisystembaum beginnt wird mit einem `/` bezeichnet. `ls /` zeigt den Inhalt dieses Wurzelverzeichnisses an.
 
 Um zusätzliche Informationen zu den Eigenschaften der aufgelisteten Objekte in einem Verzeichnis zu bekommen, kann ls mit zusätzlichen Optionen aufgerufen werden. Eine Liste aller Optionen bekomme ich mit `ls --help`.
 
@@ -63,7 +63,7 @@ Wenn wie hier die Ausgabe eines Programms auf die Standardausgabe des Terminals 
 
 Es lohnt sich, alle möglichen Optionen von ls zu verstehen und auszuprobieren. Beispielsweise erhalten wir mit `ls -l` ein langes Listing in dem der Dateityp, die Zugriffsrechte, die Anzahl der Unterverzeichnisse, Eigentümer und Gruppe sowie die Größe und das Datum der letzten Änderung an.
 
-Objekte, deren Name mit einem Punkt beginnt, werden bei einem einfachen Listing nicht angezeigt. Um alle Dateien in dem Listing zu sehen, muss die Option `ls -a` angegeben werden.
+Objekte, deren Name mit einem Punkt beginnt, werden bei einem einfachen Listing nicht angezeigt. Um auch die versteckten Dateien in dem Listing zu sehen, muss die Option `ls -a` angegeben werden.
 
 Als normaler User habe ich nicht das Recht, alle Daten zu sehen. Noch weniger kann ich Daten verändern. Nur in meinem Heimatverzeichnis gehören mir alle Daten und ich habe alle Rechte.
 
@@ -75,7 +75,7 @@ Zum Beispiel kann ich in meinem Heimatverzeichnis neue Verzeichnisse anlegen.
 
 Ich kann sofort mit `cd` in dieses Verzeichnis als neues Arbeitsverzeichnis wechseln und dann darin arbeiten.
 
-Um mir die doppelte Eingabe des Verzeichnisnamen zu ersparen, kann ich bei der Eingabe auf der Kommandozeile von bash einfach `Esc-.` eingeben. Dann erscheint automatisch das letzte Argument der letzten Kommandozeile. Anstelle von `cd Uebungen/Tools` gebe ich einfach `cd Esc-.` ein. Nach einer Weile wirst du dieses `Esc-.` ganz automatisch verwenden.
+Um mir die doppelte Eingabe des Verzeichnisnamen zu ersparen, kann ich bei der Eingabe auf der Kommandozeile von bash einfach `Esc-.` eingeben. Dann erscheint automatisch das letzte Argument der letzten Kommandozeile. Anstelle von `cd Uebungen/Tools` gebe ich einfach `cd Esc-.` ein. Probier es einfach mal aus, nach einer Weile wirst du dieses `Esc-.` ganz automatisch verwenden.
 
 Wie gesagt, es lohnt sich ein bischen Zeit in das Lernen von bash zu investieren. Diese Zeit wird im Laufe des Lebens Sekunde für Sekunde zurückgezahlt.
 
@@ -86,7 +86,7 @@ Mit bash kann ich auch eine ganze Liste von Verzeichnissen in einem einzigen Auf
 ## vim 
 Wenn ich eine existierende Textdatei bearbeiten oder eine neue erzeugen möchte, brauche ich einen Texteditor. Im Jahr 1976 wurde von Bill Joy für diesen Zweck das UNIX Programm vi geschrieben. Eine verbesserte Version dieses Editors ist in jedem Linux System unter dem Namen `vim` enthalten.
 
-Auch für vim gibt es eine Manualpage `man vim`. Ausserdem kann ich im Editor mit dem Befehl `:help` sehr ausführliche Informationen zur Verwendung des Editors bekommen. Auch für vim lohnt es sich, ein paar Stunden in das Studium der verschiedenen Funktionen zu investieren. Im Unterschied anderen Editoren sind die zentralen Funktionen seit vielen Jahrzehnten bewährt und stabil. Finde selbst heraus, weshalb dieser Editor als Standard für alle UNIX und Linux Systeme etabliert ist.
+Auch für vim gibt es eine Manualpage `man vim`. Ausserdem kann ich **im** Editor mit dem Befehl `:help` sehr ausführliche Informationen zur Verwendung des Editors bekommen. Auch für vim lohnt es sich, ein paar Stunden in das Studium der verschiedenen Funktionen zu investieren. Im Unterschied anderen Editoren sind die zentralen Funktionen seit vielen Jahrzehnten bewährt und stabil. Finde selbst heraus, weshalb dieser Editor als Standard für alle UNIX und Linux Systeme etabliert ist.
 
 Als ersten Einstieg: Der Editor arbeitet in verschiedenen Modi. Das Programm startet im Befehlsmodus in dem die Tastatureingaben bestimmte Aktionen auslösen. Mit dem Befehl `i` wechselt der Editor in den Insert Modus, in dem dann alle Tastatureingaben an der aktuellen Position des Cursors eingefügt werden. Mit der `Esc` Taste wechselt der Editor zurück in den Befehlsmodus.
 Mit `x` lösche ich das Zeichen unter dem Cursor, mit `D` lösche ich die Zeile vom Cursor bis zum Zeilenende, mit `dd` lösche ich die gesamte Zeile. Mit `p` kann ich die so gelöschte Zeile unterhalb des Cursors wieder Einfügen, mit `P` wird die Zeile oberhalb eingefügt.
@@ -96,7 +96,7 @@ Mit `:w` wird die Datei geschrieben und mit `:q` verlasse ich den Editor.
 Wenn ich verhindern will, dass ich eine existierende Datei aus Versehen verändere, kann ich den Editor auch unter dem Namen view aufrufen. Dann startet er automatisch im read only Modus.
 
 ## less 
-Eine andere Möglichkeit Dateien einfach nur anzuzeigen ohne sie zu editieren bietet ein sogenannter Pager. `less` ist so ein Werkzeug. Ohne es zu merken haben das schon bei den Aufrufen von man kennengelernt. Less ist nämlich der Standard-Pager und wird von man zum Anzeigen der Manualpages automatisch verwendet. 
+Eine andere Möglichkeit, Dateien einfach nur anzuzeigen ohne sie zu editieren, bietet ein sogenannter Pager. `less` ist so ein Werkzeug. Ohne es zu merken haben das schon bei den Aufrufen von `man` kennengelernt. Less ist nämlich der Standard-Pager und wird von man zum Anzeigen der Manualpages automatisch verwendet. Das Werkzeug `man` selbst ist 'nur' für die Formatierung der im `nroff` Format ausgezeichneten Dokumente für ein bestimmtes Ausgabegerät, hier eben der Standardpager less.
 
 ## chmod
 Für die eigenen Dateien und Verzeichnisse kann ich bestimmen, welche Rechte meine Gruppe und die übrigen Nutzer an diesen Objekten haben. Dafür gibt es das Tool `chmod`.
@@ -111,32 +111,103 @@ lädt das Source RPM Paket von Red Hat aus dem Internet. Das geht für alle aus 
 Wenn das Programm yumdownloader noch nicht auf deinem System installiert ist, muss da Paket yum-utils nachinstalliert werden.
 
 ## rpm
-Um ein mit yumdownloader geholtes Source RPM Paket auszupacken, verwende ich das Red Hat Package Manager Tool `rpm`
-Das Source RPM installiert alle Dateien automatisch in meinem Heimatverzeichnis in dem Unterverzeichnis `rpmbuild`. Zufällig habe ich das ja in mit `mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}` vorhin schon angelegt.
+Es kann passieren, dass ich das Source RPM für ein bestimmtes in meinem RHEL System installiertes Programm herunterladen möchte und das Paket nicht gefunden wird. Das liegt dann in der Regel daran, dass das Programm als Teil eines größeren Pakets mit ganz anderem Namen installiert wird.
+
+Zum Beispiel das Tool `chmod` ist so ein Fall. Um herauszubekommen, zu welchem Paket das Programm gehört, kann ich das Red Hat Package Manager Tool verwenden: `rpm -qf /usr/bin/chmod` liefert mir als Paketnamen **coreutils**.
+
+Um ein mit yumdownloader geholtes Source RPM Paket auszupacken, verwende ich ebenfalls `rpm -i coreutils*.src.rpm`.
+Beim Auspacken werden alle Dateien automatisch in meinem Heimatverzeichnis in dem Unterverzeichnis `rpmbuild` installiert. Zufällig habe ich das ja in mit `mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}` vorhin schon angelegt.
 Wenn dieses Verzeichnis nicht existiert wird es beim Auspacken des Source RPM automatisch erzeugt.
 
-In dem Verzeichnis `~/rpmbuild/SOURCES` werden alle Quelltexte abgelegt, die Red Hat zum Bauen des ausführbaren Programms verwendet hat. Im Verzeichnis `~/rpmbuild/SPECS` liegt die Steuerdatei für das RPM Build System in der die Spezifikation zum automatischen Bauen hinterlegt ist.
+In dem Verzeichnis `ls ~/rpmbuild/SOURCES` werden alle Quelltexte abgelegt, die Red Hat zum Bauen des ausführbaren Programms verwendet hat. Im Verzeichnis `ls ~/rpmbuild/SPECS` liegt die Steuerdatei für das RPM Build System in der die Spezifikation zum automatischen Bauen hinterlegt ist.
 
-Die meisten SOURCES Dateien sind relativ kleine Patches. Patches sind Änderungen, die während des Bauens an den Sourcen vorgenommen werden. Das eigentliche Source-Paket ist die Datei mit der Endung `tar.gz`
-Dabei handelt es sich um ein mit gzip komprimiertes TAR Archiv.
+Die meisten SOURCES Dateien sind relativ kleine Patches. Patches sind Änderungen, die während des Bauens an den Sourcen vorgenommen werden. Das eigentliche Source-Paket ist die Datei mit der Endung `tar.xz`
+Dabei handelt es sich um ein mit `xz` komprimiertes TAR Archiv.
 
 ## tar
 `tar` ist ein Werkzeug und ein Dateiformat, das für UNIX schon im Jahr 1979 entwickelt wurde. Der Name weist auf die ursprüngliche Funktion zum Schreiben und Lesen von Datensicherungen auf Magnetbändern hin. Es lassen sich aber ebenso gut Archivdateien auf einer Festplatte damit bearbeiten.
 
 ```
 cd ~/rpmbuild/BUILD
-tar xvfz ../SOURCES/bash-4.2.tar.gz
+tar xvf ../SOURCES/coreutils*.tar.xz
 ```
 
 ## cp 
+Wenn ich eigene Änderungen an dem Sourcecode machen will um das Programm meinen Ideen und Anforderungen entsprechend anzupassen, sollte ich vorher eine Kopie anlegen und so den originalen Zustand zum Verglich behalten. Zum Kopieren haben wir das Tool `cp`. Auch hier gibt es eine ganze Reihe von Optionen und es lohnt sich, die Manualpage `man cp` ausführlich zu studieren.
+
+Ich kopiere rekursiv die ganzen coreutils Sourcen im Archiv modus:
+
+```
+cp -a coreutils-*/ coreutils.tmp
+cd Esc-.
+```
+
+Damit bleiben in der Kopie alle Dateirechte, Links und Attribute erhalten.
+
+Jetzt kann ich in der Kopie alles mögliche ändern und ausprobieren.
+
+Zum Beispiel kann ich das Tool `whoami` so verändern, dass es mir nicht einfach nur meinen Usernamen entgegenwirft. Ich möchte eine neue **polite** Option einführen in der ich etwas freundlicher angesprochen werde.
+
+```
+vim coreutils.tmp/src/whoami.c 
+/* TODO: add new polite option to be more human friendly */
+/* TODO: in polite mode, reply with full name if available */
+```
+ 
+
+## diff
+Wenn ich nach einer Weile nicht mehr genau weiß, was ich eigentlich alles geändert habe, kann ich mir mit dem Werkzeug `diff` alle Änderungen anzeigen lassen.
+
+```
+diff -Nur coreutils-* coreutils.tmp
+```
+
+Ich kann diese Änderungen auch in einer Datei sichern, um sie später wieder reproduzieren zu können. Dazu verwende ich die Ausgabeumleitung der Shell:
+
+```
+diff -Nur coreutils-* coreutils.tmp >write-polite.patch
+```
+## patch
+
+Diesen Patch kann ich jetzt auf die unveränderten Sourcen anwenden:
+
+```
+cd coreutils-*
+patch -p1 --verbose -i ../write-polite.patch
+```
 ## mv 
+
+Wenn ich mit dem Ergebnis zufrieden bin, kann ich den neuen Patch zu den Sourcen legen und die RPM Spezifikation so anpassen, dass in der nächsten Version meine Änderung enthalten ist.
+
+```
+cd ..
+mv write-polite.patch ../SOURCES/
+```
+
 ## rm 
+
+Wenn ich es mir anders überlege, kann ich den Patch auch wieder löschen:
+
+```
+rm -i ~/rpmbuild/SOURCES/write-polite.patch
+```
+
+Mit der Interactive Option werde ich für jede Datei einzeln gefragt, ob sie wirklich gelöscht werden soll.
+
 ## rmdir 
+
+Für das Löschen von Verzeichnissen gibt es ein eigenes Tool, `rmdir`.
+
+Allerdings arbeitet dieses Tool tatsächlich nur und ausschließlich auf Verzeichnissen. Wenn in dem Verzeichnis nur eine einzige andere Datei liegt, lässt dieses Tool das Verzeichnis unverändert. Das ist durchaus logisch. Wer `rmdir` aufruft bekommt auch genau das. Das Tool heißt ja nicht *rmdirandeveythinginside*.
+
+Um ein Verzeichnis mit allem Inhalt schnell und radikal zu löschen verwenden wir stattdessen `rm -fr`.
+
+Vor so einem radikalen Schritt ist es immer sinnvoll einen Moment inne zu halten um sich zu vergewissern dass nichts wichtiges dabei verloren geht. Das Linux Dateisystem hat kein Netz und doppelten Boden um einmal gelöschte Dateien zurück zu bringen. Die Rekonstruktion von Daten auf dem unter dem Dateisystem liegenden Blockdevice ist extrem aufwändig und unsicher, deshalb solte das unbedingt vermieden werden.
+
+## ssh
 ## git
 ## grep 
 ## sort 
 ## head 
 ## tail 
 ## make 
-
-
