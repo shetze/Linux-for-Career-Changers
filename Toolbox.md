@@ -50,6 +50,24 @@ Die Manualpage von bash ist ziemlich lang, du kannst mit den Tasten `Space` und 
 
 Mit `Ctrl-L` wird der aktuelle Inhalt des Terminalfensters gelöscht.
 
+## ssh
+
+Linux und Open Source Software haben die größte Bedeutung und entfalten ihren vollen Nutzen als Server und mit netzwerkbasierte Applikationen. Im wissenschaftlich technischen Bereich gibt es auch Linux Workstations am Arbeitsplatz, die leistungsfähigsten Systeme befinden sich aber in der Regel zentral in gut gesicherten und klimatisierten Rechenzentren.
+
+Um bequem vom Arbeisplatz aus mit und auf diesen Serversystemen zu arbeiten verwenden wir das Werkzeug `ssh user@server.example.org`.
+
+Der Name *Secure Shell* ist ein bischen irreführend, weil ssh selbst nur die Netzwerkfunktionalität zur Verbindung zu einem sshd Server bereitstellt. Als Default wird auf der Gegenstelle automatisch eine Shell gestartet, typischerweise bash. Es können aber auch beliebig andere Programme mit ssh aufgerufen werden. Der Name ssh verweist auf ein anderes Tool, `rsh` (remote shell) das im Prinzip den gleichen Zweck erfüllt. Allerdings ist die Netzwerkverbinung mit rsh nicht automatisch und in jedem Fall stark verschlüsselt. Das hat sich als schwerwiegendes Sicherheitsrisiko erwiesen, deshalb wird heute ssh als Nachfolger mit starken Sicherheitseigenschaften verwendet.
+
+Die Verbindung zur Gegenstelle kann grundsätzlich über ein einfaches user/password Login verfahren authentifiziert werden. Schon bei der Anmeldung werden alle Tastatureingaben verschlüsselt übertragen. Trotzdem wird von vielen Servern die Passwortauthentifizierung generell verboten. Stattdessen wird für die Authentifizierung ein zuvor ausgetauschter ssh-key erwartet. So ein Schlüssel wird mit `ssh-keygen` erzeugt. Der private Teil des Schlüssels muss sicher aufbewahrt werden. Der öffentliche Teil kann dann aber ohne Risiko weitergegeben werden.
+
+## sudo
+
+Das Rollen-Rechte Modell von Linux erlaubt eine ziemlich gute Absicherung der Systemressourcen vor unberechtigtem Zugriff und versehenlicher Beschädigung durch interaktive Benutzer. Dieses Modell setzt aber voraus, dass die Nutzer regelmäßig einen persönlichen Account verwenden und nur bei Bedarf und in einer möglichst gut kontrollierten Umgebung mit größeren Privilegien arbeiten.
+
+Diese kontrollierte Umgebung wird durch das Werkzeug `sudo` bereit gestellt.
+
+Mit `man sudo` und `man sudoers` wird eine ganz gute Übersicht zu Funktion und Leistung dieses Werkzeugs gegeben.
+
 ## ls
 Sämtliche Daten im Linux System sind in dem einen großen Dateisystem organisiert. Um hier eine Übersicht zu bekommen, gibt es das Werkzeug ls. Mit `ls` wird der Inhalt eines Verzeichnisses angezeigt.
 
@@ -66,6 +84,12 @@ Es lohnt sich, alle möglichen Optionen von ls zu verstehen und auszuprobieren. 
 Objekte, deren Name mit einem Punkt beginnt, werden bei einem einfachen Listing nicht angezeigt. Um auch die versteckten Dateien in dem Listing zu sehen, muss die Option `ls -a` angegeben werden.
 
 Als normaler User habe ich nicht das Recht, alle Daten zu sehen. Noch weniger kann ich Daten verändern. Nur in meinem Heimatverzeichnis gehören mir alle Daten und ich habe alle Rechte.
+
+## find
+
+Wenn ich das möchte, kann ich mir mit einem rekursiven Listing den gesamten Dateisystembaum anzeigen lassen, jedenfalls für alle Bereiche in denen ich die Rechte zum Lesen und Ausführen auf den Verzeichnissen habe.
+
+Um zum Beispiel nach allen Dateien zu suchen die etwas mit der bash zu tun haben, ist das aber eine ziemlich aufwändige Methode. Viel besser zu diesem Zweck geeignet ist das Werkzeug `find / -name bash\*`.
 
 ## mkdir
 
@@ -204,16 +228,6 @@ Um ein Verzeichnis mit allem Inhalt schnell und radikal zu löschen verwenden wi
 
 Vor so einem radikalen Schritt ist es immer sinnvoll einen Moment inne zu halten um sich zu vergewissern dass nichts wichtiges dabei verloren geht. Das Linux Dateisystem hat kein Netz und doppelten Boden um einmal gelöschte Dateien zurück zu bringen. Die Rekonstruktion von Daten auf dem unter dem Dateisystem liegenden Blockdevice ist extrem aufwändig und unsicher, deshalb sollte das unbedingt vermieden werden.
 
-## ssh
-
-Linux und Open Source Software haben die größte Bedeutung und entfalten ihren vollen Nutzen als Server und mit netzwerkbasierte Applikationen. Im wissenschaftlich technischen Bereich gibt es auch Linux Workstations am Arbeitsplatz, die leistungsfähigsten Systeme befinden sich aber in der Regel zentral in gut gesicherten und klimatisierten Rechenzentren.
-
-Um bequem vom Arbeisplatz aus mit und auf diesen Serversystemen zu arbeiten verwenden wir das Werkzeug `ssh user@server.example.org`.
-
-Der Name *Secure Shell* ist ein bischen irreführend, weil ssh selbst nur die Netzwerkfunktionalität zur Verbindung zu einem sshd Server bereitstellt. Als Default wird auf der Gegenstelle automatisch eine Shell gestartet, typischerweise bash. Es können aber auch beliebig andere Programme mit ssh aufgerufen werden. Der Name ssh verweist auf ein anderes Tool, `rsh` (remote shell) das im Prinzip den gleichen Zweck erfüllt. Allerdings ist die Netzwerkverbinung mit rsh nicht automatisch und in jedem Fall stark verschlüsselt. Das hat sich als schwerwiegendes Sicherheitsrisiko erwiesen, deshalb wird heute ssh als Nachfolger mit starken Sicherheitseigenschaften verwendet.
-
-Die Verbindung zur Gegenstelle kann grundsätzlich über ein einfaches user/password Login verfahren authentifiziert werden. Schon bei der Anmeldung werden alle Tastatureingaben verschlüsselt übertragen. Trotzdem wird von vielen Servern die Passwortauthentifizierung generell verboten. Stattdessen wird für die Authentifizierung ein zuvor ausgetauschter ssh-key erwartet. So ein Schlüssel wird mit `ssh-keygen` erzeugt. Der private Teil des Schlüssels muss sicher aufbewahrt werden. Der öffentliche Teil kann dann aber ohne Risiko weitergegeben werden.
-
 ## git
 
 Die Verteilung von Quelltexten zu Open Source Projekten über Source Pakete, wie wir das mit `yumdownload` gesehen haben, ist nur eine von vielen Möglichkeiten. In der Praxis ist für die gemeinschaftliche Arbeit an großen Projekten der Weg über ein Versionskontrollsytem auf einem öffentlichen Server im Internet wesentlich besser geeignet.
@@ -228,4 +242,4 @@ direkt und aus erster Hand von dem *Heimatserver* des jeweiligen Projekts bekomm
 ## sort 
 ## head 
 ## tail 
-## make 
+## strace
